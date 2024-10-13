@@ -64,4 +64,20 @@ public:
      * @return Returns the size
      */
     int size();
+
+
+    /**
+     * @brief To delete all the elements of stack
+     * 
+     * @return true 
+     * @return false 
+     */
+    bool clear();
+
+
+    /**
+     * @brief To display value in stack from top to bottom
+     * 
+     */
+    void traverse();
 };
