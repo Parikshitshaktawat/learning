@@ -1,7 +1,7 @@
-#include "Stack.h"
+#include "Queue.h"
 #include <iostream>
 
-void performAction(int option, Stack *stack)
+void performAction(int option, Queue *queue)
 {
     switch (option)
     {
@@ -19,16 +19,9 @@ void performAction(int option, Stack *stack)
                 stop = true;
                 break;
             }
-            try
-            {
-                bool result = stack->push(value);
-                if (result)
-                    std::cout << "Pushed successfully!!!" << std::endl;
-            }
-            catch (const std::exception &e)
-            {
-                std::cout << "Failed due to --> " << e.what() << std::endl;
-            }
+            
+            queue->enQueue(value);
+             
             value = 0;
         }
         // system("clear");
@@ -39,9 +32,9 @@ void performAction(int option, Stack *stack)
     {
         try
         {
-            bool result = stack->pop();
+            bool result = queue->deQueue();
             if (result)
-                std::cout << "Poped successfully!!!" << std::endl;
+                std::cout << "Removed successfully!!!" << std::endl;
         }
         catch (const std::exception &e)
         {
@@ -53,8 +46,8 @@ void performAction(int option, Stack *stack)
     {
         try
         {
-            int result = stack->peek();
-            std::cout << "Found top : " << result << std::endl;
+            int result = queue->peek();
+            std::cout << "Found front : " << result << std::endl;
         }
         catch (const std::exception &e)
         {
@@ -66,7 +59,7 @@ void performAction(int option, Stack *stack)
     {
         try
         {
-            stack->traverse();
+            queue->displayQueue();
         }
         catch (const std::exception &e)
         {
@@ -76,11 +69,11 @@ void performAction(int option, Stack *stack)
     break;
     case 5:
     {
-        int result = stack->size();
+        int result = queue->size();
         try
         {
-            int result = stack->size();
-            std::cout << "Size of stack : " << result << std::endl;
+            int result = queue->size();
+            std::cout << "Size of queue : " << result << std::endl;
         }
         catch (const std::exception &e)
         {
@@ -90,16 +83,8 @@ void performAction(int option, Stack *stack)
     break;
     case 6:
     {
-        try
-        {
-            bool result = stack->clear();
-            if (result)
-                std::cout << "Cleared successfully!!!" << std::endl;
-        }
-        catch (const std::exception &e)
-        {
-            std::cout << "Failed due to --> " << e.what() << std::endl;
-        }
+        queue->clear();
+        
     }
     break;
     case 7:
@@ -115,16 +100,16 @@ void performAction(int option, Stack *stack)
 
 int main()
 {
-    Stack top;
+    Queue q;
     while (true)
     {
         int option = 0;
         int value = 0;
-        std::cout << "\n\n\n<<<... Program to perform stack operation ...>>>" << std::endl;
-        std::cout << "1. Push" << std::endl;
-        std::cout << "2. Pop" << std::endl;
+        std::cout << "\n\n\n<<<... Program to perform Queue operation ...>>>" << std::endl;
+        std::cout << "1. Enqueue" << std::endl;
+        std::cout << "2. Dequeue" << std::endl;
         std::cout << "3. Peek" << std::endl;
-        std::cout << "4. Traverse" << std::endl;
+        std::cout << "4. Print Queue" << std::endl;
         std::cout << "5. Size" << std::endl;
         std::cout << "6. Clear" << std::endl;
         std::cout << "7. Exit" << std::endl;
@@ -132,7 +117,7 @@ int main()
         std::cin >> option;
 
         std::cout << "\n\n\n";
-        performAction(option, &top);
+        performAction(option, &q);
     }
 
     return 0;

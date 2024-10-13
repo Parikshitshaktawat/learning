@@ -54,7 +54,7 @@ public:
      * 
      * @return Returns the int value which is on the top
      */
-    int peak();
+    int peek();
 
 
 

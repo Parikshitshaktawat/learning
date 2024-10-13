@@ -63,7 +63,7 @@ int Stack::size()
     return count;
 }
 
-int Stack::peak()
+int Stack::peek()
 {
     if (isEmpty())
     {
