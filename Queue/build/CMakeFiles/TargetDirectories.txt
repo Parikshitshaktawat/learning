@@ -1,4 +1,0 @@
-/home/ottonomy/practice_project/learning/Queue/build/CMakeFiles/runTests.dir
-/home/ottonomy/practice_project/learning/Queue/build/CMakeFiles/queue.dir
-/home/ottonomy/practice_project/learning/Queue/build/CMakeFiles/edit_cache.dir
-/home/ottonomy/practice_project/learning/Queue/build/CMakeFiles/rebuild_cache.dir
