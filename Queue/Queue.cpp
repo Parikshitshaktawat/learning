@@ -26,21 +26,23 @@ void Queue::enQueue(int data)
     newNode->data = data;
     newNode->next = nullptr;
     if (isEmpty())
-    {
+    {   
         front = rear = newNode;
         return;
     }
     rear->next = newNode;
+    rear = newNode;
+
     return;
 }
 
 bool Queue::deQueue()
 {
-    Node *temp = front;
     if (isEmpty())
     {
         throw std::runtime_error("Queue is empty");
     }
+    Node *temp = front;
     front = front->next;
     delete temp;
     if (front == nullptr)
@@ -55,12 +57,11 @@ bool Queue::isEmpty()
     return (!rear && !front);
 }
 
-void Queue::displayQueue()
+bool Queue::displayQueue()
 {
     if (isEmpty())
     {
-        std::cout << "Queue is empty." << std::endl;
-        return;
+        throw std::runtime_error("Queue is empty");
     }
     Node *temp = front;
     std::cout << "Queue elements: ";
@@ -73,7 +74,7 @@ void Queue::displayQueue()
         }
         temp = temp->next;
     }
-    return;
+    return true;
 }
 
 int Queue::size(){
@@ -92,11 +93,10 @@ int Queue::size(){
     
 }
 
-void Queue::clear(){
+bool Queue::clear(){
     if (isEmpty())
     {
-        std::cout << "Queue is empty so no need to clear\n";
-        return;
+        return false;
     }
     Node *temp = front;
     while(temp){
@@ -106,8 +106,7 @@ void Queue::clear(){
     }
     rear = nullptr;
     front = nullptr;
-    std::cout<<"Queue cleared successfully!!"<<std::endl;
-    return;
+    return true;
 
 }
 

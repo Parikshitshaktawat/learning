@@ -53,10 +53,12 @@ public:
 
 
     /**
-     * @brief To display all the elements of queue
+     * @brief Displays the whole queue
      * 
+     * @return true If success
+     * @return false If queue is empty
      */
-    void displayQueue();
+    bool displayQueue();
 
 
     /**
@@ -78,8 +80,10 @@ public:
     /**
      * @brief It will clear the queue
      * 
+     * @return true If success
+     * @return false If faliled
      */
-    void clear();
+    bool clear();
 };
 
 

@@ -25,9 +25,9 @@ void performAction(int option, Queue *queue)
             value = 0;
         }
         // system("clear");
+        break;
     }
 
-    break;
     case 2:
     {
         try
@@ -40,8 +40,8 @@ void performAction(int option, Queue *queue)
         {
             std::cout << "Failed due to --> " << e.what() << std::endl;
         }
+        break;
     }
-    break;
     case 3:
     {
         try
@@ -53,8 +53,8 @@ void performAction(int option, Queue *queue)
         {
             std::cout << "Failed due to --> " << e.what() << std::endl;
         }
+        break;
     }
-    break;
     case 4:
     {
         try
@@ -65,11 +65,10 @@ void performAction(int option, Queue *queue)
         {
             std::cout << "Failed due to --> " << e.what() << std::endl;
         }
+        break;
     }
-    break;
     case 5:
     {
-        int result = queue->size();
         try
         {
             int result = queue->size();
@@ -79,14 +78,17 @@ void performAction(int option, Queue *queue)
         {
             std::cout << "Failed due to --> " << e.what() << std::endl;
         }
+        break;
     }
-    break;
     case 6:
     {
-        queue->clear();
+        if(queue->clear())
+            std::cout<<"Queue cleared successfully!!"<<std::endl;
+        else
+            std::cout << "Queue is empty so no need to clear\n";
         
+        break;
     }
-    break;
     case 7:
         exit(0);
         break;
@@ -100,7 +102,7 @@ void performAction(int option, Queue *queue)
 
 int main()
 {
-    Queue q;
+    Queue *q = new Queue();
     while (true)
     {
         int option = 0;
@@ -117,7 +119,7 @@ int main()
         std::cin >> option;
 
         std::cout << "\n\n\n";
-        performAction(option, &q);
+        performAction(option, q);
     }
 
     return 0;
